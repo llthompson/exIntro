@@ -39,7 +39,11 @@ app.put('/users/:_id', (req, res) => {
   res.send(users[userIndex])
 });
 
-
+app.delete('/users/:_id', (req, res) => {
+  const userIndex = users.findIndex((user) => user._id === parseInt(req.params._id))
+  users[userIndex].isActive = false;
+  res.send(`User has been deleted.`)
+});
 
 /* END - create routes here */
 
